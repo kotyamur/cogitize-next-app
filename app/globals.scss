@@ -33,9 +33,39 @@ body {
   background-position: center;
   background-repeat: no-repeat;  
   background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+.barContainer {
+  width: 1034px;
+  height: 836px;
+  flex-shrink: 0;
+  border-radius: var(--border-radius);
+  border: 2px solid var(--border-color);
+  background: var(--background-dark); 
+  padding: 24px 24px 20px;
 }
