@@ -1,3 +1,7 @@
 export default function Hierarchy() {
-  return <div>Hierarchy page</div>;
+    return (
+      <main>
+        <h1>Hierarchy page</h1>
+      </main>
+    );
 }

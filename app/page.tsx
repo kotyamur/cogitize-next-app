@@ -1,10 +1,9 @@
 import Image from 'next/image'
 import styles from './page.module.scss'
 
-export default function Home() {
+export default function Positions() {
   return (
-    <main className={styles.main}>
-
+    <main>
       <div className={styles.center}>
         <Image
           className={styles.logo}
@@ -15,7 +14,6 @@ export default function Home() {
           priority
         />
       </div>
-
     </main>
-  )
+  );
 }

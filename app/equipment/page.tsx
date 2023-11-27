@@ -1,3 +1,7 @@
 export default function Equipment() {
-  return <div>Equipment page</div>;
+    return (
+      <main>
+        <h1>Equipment page</h1>
+      </main>
+    );
 }

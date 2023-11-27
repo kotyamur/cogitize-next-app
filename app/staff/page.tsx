@@ -1,3 +1,7 @@
 export default function Staff() {
-  return <div>Staff page</div>;
+    return (
+      <main>
+        <h1>Staff page</h1>
+      </main>
+    );
 }
