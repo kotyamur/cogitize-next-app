@@ -1,6 +1,25 @@
+.positionsContainer {
+    flex-basis: 296px;
+}
+
 .positionList {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    flex-basis: 296px;
+    margin-bottom: 8px;
+}
+
+.createBtn {
+    height: 48px;
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    border: 2px solid var(--border-color);
+    background: var(--accent-color);
+    box-shadow: 0px 4px 40px 0px rgba(104, 102, 234, 0.24);
+    color: var(--light-text-color);
+    text-shadow: 0px 4px 8px rgba(245, 245, 245, 0.24);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: calc(18/12);
 }

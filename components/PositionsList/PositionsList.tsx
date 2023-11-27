@@ -13,10 +13,16 @@ const positionList = [
 ];
 
 export const PositionsList: FC = () => {
-    return <ul className={styles.positionList}>
+  return (
+    <div className={styles.positionsContainer}>
+      <ul className={styles.positionList}>
         {positionList.map((item) => {
-          // return <li key={item.id}>{item.name}</li>
           return <PositionsItem key={item.id} item={item} />;
-      })}
-  </ul>;
+        })}
+      </ul>
+      <button type="button" className={styles.createBtn}>
+        Создать новую должность
+      </button>
+    </div>
+  );
 };
