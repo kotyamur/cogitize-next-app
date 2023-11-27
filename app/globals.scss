@@ -37,6 +37,10 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: calc(18/12); 
+  color: var(--grey-text-color);
 }
 
 a {

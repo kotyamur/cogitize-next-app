@@ -1,10 +1,14 @@
-import Image from 'next/image'
+// import Image from 'next/image'
+import { PositionsList } from '@/components/PositionsList/PositionsList';
 import styles from './page.module.scss'
+import { DutiesForm } from '@/components/DutiesForm/DutiesForm';
 
 export default function Positions() {
   return (
-    <main>
-      <div className={styles.center}>
+    <main className={styles.main}>
+      <PositionsList />
+      <DutiesForm />
+      {/* <div className={styles.center}>
         <Image
           className={styles.logo}
           src="/next.svg"
@@ -13,7 +17,7 @@ export default function Positions() {
           height={37}
           priority
         />
-      </div>
+      </div> */}
     </main>
   );
 }
