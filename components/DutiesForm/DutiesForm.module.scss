@@ -41,7 +41,10 @@
     margin-bottom: 8px;
     border-radius: var(--border-radius);
     background: var(--background-dark);
-    & > label {
+}
+
+.responsibilityGroup {
+   & > label {
         display: flex;
         align-items: center;
         margin-bottom: 10px;
@@ -88,7 +91,7 @@
     }
 }
 
-.responsibilitiItem {
+.responsibilityItem {
     color: var(--light-text-color);
 }
 
