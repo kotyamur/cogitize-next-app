@@ -5,12 +5,13 @@ import styles from "./DutiesForm.module.scss";
 import { useForm, SubmitHandler, UseFormRegister } from "react-hook-form";
 import CheckIcon from "@/assets/icons/CheckIcon";
 
-const responsibilities = [
+export const responsibilities = [
   {
-    name: "showdown",
-    valueList: ["duel", "make-claims"],
+    valueList: [
+      { text: "Дуель", value: "duel" },
+      { text: "Выставлять претензии", value: "make-claims" },
+    ],
     text: "Разборки",
-    labelsText: ["Дуель", "Выставлять претензии"],
   },
 ];
 
@@ -21,17 +22,39 @@ type Inputs = {
 };
 
 type Props = {
-  register: UseFormRegister<Inputs>
+  register: UseFormRegister<Inputs>;
+  duties: {
+    valueList: { text: string; value: string }[];
+    text: string;
+  };
+  dutyName: "name" | "trading" | "showdown";
 };
 
-export const LabelGroup = ({register}: Props) => {
+export const LabelGroup = ({ register, duties, dutyName }: Props) => {
+  const { text, valueList } = duties;
   return (
     <div className={styles.responsibilityGroup}>
-      <p className={styles.checkboxHeading}>Разборки</p>
+      <p className={styles.checkboxHeading}>{text}</p>
+          {valueList.map(({ text, value }) => {
+          return (
+            <label key={value}>
+              <input
+                type="checkbox"
+                {...register(dutyName)}
+                value={value}
+                className={`${styles.checkboxIcon} visuallyHidden`}
+              />
+              <span className={styles.customIcon}>
+                <CheckIcon />
+              </span>
+              <span className={styles.responsibilityItem}>{text}</span>
+            </label>
+          );
+      })}
       <label>
         <input
           type="checkbox"
-          {...register("showdown")}
+          {...register(dutyName)}
           value="duel"
           className={`${styles.checkboxIcon} visuallyHidden`}
         />
@@ -43,7 +66,7 @@ export const LabelGroup = ({register}: Props) => {
       <label>
         <input
           type="checkbox"
-          {...register("showdown")}
+          {...register(dutyName)}
           value="make-claims"
           className={`${styles.checkboxIcon} visuallyHidden`}
         />
@@ -117,7 +140,11 @@ export const DutiesForm: FC = () => {
               </span>
             </label>
           </div>
-          <LabelGroup register={register} />
+          <LabelGroup
+            register={register}
+            dutyName="showdown"
+            duties={responsibilities[0]}
+          />
         </div>
 
         <input className={styles.submitBtn} type="submit" value="Сохранить" />
