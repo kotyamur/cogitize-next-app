@@ -1,4 +1,5 @@
 .container {
+    height: 680px;
     padding: 16px;
     flex-grow: 1;
     border-radius: var(--border-radius);
@@ -41,8 +42,10 @@
     border-radius: var(--border-radius);
     background: var(--background-dark);
     & > label {
-        display: block;
+        display: flex;
+        align-items: center;
         margin-bottom: 10px;
+        font-weight: 500;
     }
 }
 
@@ -62,6 +65,31 @@
 .checkboxHeading {
     font-weight: 500;
     margin-bottom: 4px;
+}
+
+.customIcon {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-right: 8px;
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    border: 2px solid var(--border-color); 
+    & > svg > path {
+        fill: transparent;
+    }
+
+    .checkboxIcon:checked + & {
+        border-color: var(--accent-color);
+    }
+    .checkboxIcon:checked + & > svg > path {
+        fill:  var(--accent-color);
+    }
+}
+
+.responsibilitiItem {
+    color: var(--light-text-color);
 }
 
 .submitBtn {

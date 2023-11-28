@@ -3,6 +3,7 @@ import { FC } from "react";
 import styles from "./DutiesForm.module.scss";
 
 import { useForm, SubmitHandler } from "react-hook-form";
+import CheckIcon from "@/assets/icons/CheckIcon";
 
 type Inputs = {
   name: string;
@@ -28,33 +29,43 @@ export const DutiesForm: FC = () => {
             <p>Обязаности</p>
           </div>
           <p className={styles.checkboxHeading}>Торговля</p>
-          <label htmlFor="trading">
+          <label>
             <input
               type="checkbox"
               {...register("trading")}
               value="sale-product"
-              checked
+              className={`${styles.checkboxIcon} visuallyHidden`}
             />
-            <span>+</span>
-            <span>Продавать продукт</span>
+            <span className={styles.customIcon}>
+              <CheckIcon />
+            </span>
+            <span className={styles.responsibilitiItem}>Продавать продукт</span>
           </label>
-          <label htmlFor="trading">
+          <label>
             <input
               type="checkbox"
               {...register("trading")}
               value="set-prices"
+              className={`${styles.checkboxIcon} visuallyHidden`}
             />
-            <span>+</span>
-            <span>Выставлять цены</span>
+            <span className={styles.customIcon}>
+              <CheckIcon />
+            </span>
+            <span className={styles.responsibilitiItem}>Выставлять цены</span>
           </label>
-          <label htmlFor="trading">
+          <label>
             <input
               type="checkbox"
               {...register("trading")}
               value="view-analytics"
+              className={`${styles.checkboxIcon} visuallyHidden`}
             />
-            <span>+</span>
-            <span>Смотреть аналитику</span>
+            <span className={styles.customIcon}>
+              <CheckIcon />
+            </span>
+            <span className={styles.responsibilitiItem}>
+              Смотреть аналитику
+            </span>
           </label>
         </div>
 
