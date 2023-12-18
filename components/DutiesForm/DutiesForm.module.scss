@@ -36,6 +36,10 @@
 
 .responsibilitiesBox {
     position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 12px;
     flex-grow: 1;
     padding: 52px 16px;
     margin-bottom: 8px;
@@ -44,6 +48,8 @@
 }
 
 .responsibilityGroup {
+    width: calc(50% - 12px/2);
+
    & > label {
         display: flex;
         align-items: center;

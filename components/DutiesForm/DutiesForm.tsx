@@ -8,10 +8,32 @@ import CheckIcon from "@/assets/icons/CheckIcon";
 export const responsibilities = [
   {
     valueList: [
+      { text: "Продавать продукт", value: "sale-product" },
+      { text: "Выставлять цены", value: "set-prices" },
+      { text: "Смотреть аналитику", value: "view-analytics" },
+    ],
+    text: "Торговля",
+  },
+  {
+    valueList: [
+      { text: "Закупать сырье", value: "buy-materials" },
+      { text: "Назначать рабочих", value: "appoint-workers" },
+    ],
+    text: "Производство",
+  },
+  {
+    valueList: [
       { text: "Дуель", value: "duel" },
       { text: "Выставлять претензии", value: "make-claims" },
     ],
     text: "Разборки",
+  },
+  {
+    valueList: [
+      { text: "Назначать должности", value: "assign-positions" },
+      { text: "Выгонять из банды", value: "expand-from-the-gang" },
+    ],
+    text: "Управление",
   },
 ];
 
@@ -19,6 +41,8 @@ type Inputs = {
   name: string;
   trading: string | string[];
   showdown: string | string[];
+  production: string | string[];
+  management: string | string[];
 };
 
 type Props = {
@@ -27,7 +51,7 @@ type Props = {
     valueList: { text: string; value: string }[];
     text: string;
   };
-  dutyName: "name" | "trading" | "showdown";
+  dutyName: "name" | "trading" | "showdown" | "production" | "management";
 };
 
 export const LabelGroup = ({ register, duties, dutyName }: Props) => {
@@ -51,39 +75,14 @@ export const LabelGroup = ({ register, duties, dutyName }: Props) => {
             </label>
           );
       })}
-      <label>
-        <input
-          type="checkbox"
-          {...register(dutyName)}
-          value="duel"
-          className={`${styles.checkboxIcon} visuallyHidden`}
-        />
-        <span className={styles.customIcon}>
-          <CheckIcon />
-        </span>
-        <span className={styles.responsibilityItem}>Дуель</span>
-      </label>
-      <label>
-        <input
-          type="checkbox"
-          {...register(dutyName)}
-          value="make-claims"
-          className={`${styles.checkboxIcon} visuallyHidden`}
-        />
-        <span className={styles.customIcon}>
-          <CheckIcon />
-        </span>
-        <span className={styles.responsibilityItem}>Выставлять претензии</span>
-      </label>
     </div>
   );
 };
 
 export const DutiesForm: FC = () => {
-  // const [formData, setFormData] = useState();
-    const { register, handleSubmit } = useForm<Inputs>();
+  const { register, handleSubmit } = useForm<Inputs>();
     
-    const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
     
   return (
     <div className={styles.container}>
@@ -97,53 +96,25 @@ export const DutiesForm: FC = () => {
           <div className={styles.boxHeading}>
             <p>Обязаности</p>
           </div>
-          <div className={styles.responsibilityGroup}>
-            <p className={styles.checkboxHeading}>Торговля</p>
-            <label>
-              <input
-                type="checkbox"
-                {...register("trading")}
-                value="sale-product"
-                className={`${styles.checkboxIcon} visuallyHidden`}
-              />
-              <span className={styles.customIcon}>
-                <CheckIcon />
-              </span>
-              <span className={styles.responsibilityItem}>
-                Продавать продукт
-              </span>
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                {...register("trading")}
-                value="set-prices"
-                className={`${styles.checkboxIcon} visuallyHidden`}
-              />
-              <span className={styles.customIcon}>
-                <CheckIcon />
-              </span>
-              <span className={styles.responsibilityItem}>Выставлять цены</span>
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                {...register("trading")}
-                value="view-analytics"
-                className={`${styles.checkboxIcon} visuallyHidden`}
-              />
-              <span className={styles.customIcon}>
-                <CheckIcon />
-              </span>
-              <span className={styles.responsibilityItem}>
-                Смотреть аналитику
-              </span>
-            </label>
-          </div>
+          <LabelGroup
+            register={register}
+            dutyName="trading"
+            duties={responsibilities[0]}
+          />
+          <LabelGroup
+            register={register}
+            dutyName="production"
+            duties={responsibilities[1]}
+          />
           <LabelGroup
             register={register}
             dutyName="showdown"
-            duties={responsibilities[0]}
+            duties={responsibilities[2]}
+          />
+          <LabelGroup
+            register={register}
+            dutyName="management"
+            duties={responsibilities[3]}
           />
         </div>
 
